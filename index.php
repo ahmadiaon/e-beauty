@@ -1,19 +1,21 @@
 <?php
-    include "service/service.php";
+    $_POST["role"] = 'guest';
+    include "service.php";
     $tipss = get_where("tips", 'status', 1 );
+    $docters = query("SELECT * FROM docters");
+    // dd($_SESSION['user']);
     // Declare for this page
     $_SESSION["title"] = "Beranda";
+    $data = first("profile");
 ?>
 <!-- H E A D -->
 <?php include "layout/head.php" ?>
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-   <?php include "layout/navbar.php" ?>
+    
+    <!-- Header Section Begin -->
+    <?php include "layout/header.php" ?>
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
@@ -21,7 +23,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    
+                    <div class="hero__text">
+                        <span>Eiusmod tempor incididunt </span>
+                        <h2>Take the world's best quality Treadment</h2>
+                        <a href="#tips" class="primary-btn normal-btn">Tips for you</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,17 +49,15 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="consultation__text__item">
                                     <div class="section-title">
-                                        <span>Selamat datang di Beauty</span>
-                                        <h2>Dapatkan Pelayanan <b>AESTHETIC</b></h2>
+                                        <span><?= $data["home_welcome"] ?></span>
+                                        <h2><?= $data["home_title"] ?><b> <?= $data["home_name"] ?> </b></h2>
                                     </div>
-                                    <p>30 Years of experience in Cosmetic Surgery.Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p>
+                                    <p><?= $data["home_description"] ?></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="consultation__video set-bg" data-setbg="img/consultation-video.jpg">
-                                    <a href="https://www.youtube.com/watch?v=PXsuI67s2AA" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <a href="<?= $data["home_video"] ?>" class="play-btn video-popup"><i class="fa fa-play"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -149,71 +153,20 @@
                 </div>
             </div>
             <div class="row text-center">
+            <?php foreach($docters as $docter):?>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="team__item">
-                        <img src="img/team/team-1.jpg" alt="">
-                        <h5>Caroline Grant</h5>
-                        <span>Plastic surgeon</span>
+                        <img src="file/<?= $docter['image_path']?>" alt="">
+                        <h5><?= $docter['name']?></h5>
+                        <span><?= $docter['specialis']?></span>
                         <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="<?= $docter['facebook']?>"><i class="fa fa-facebook"></i></a>
+                            <a href="<?= $docter['twitter']?>"><i class="fa fa-twitter"></i></a>
+                            <a href="<?= $docter['instagram']?>"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="img/team/team-2.jpg" alt="">
-                        <h5>Dr. Maria Angel</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="img/team/team-3.jpg" alt="">
-                        <h5>Nathan Mullins</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="img/team/team-3.jpg" alt="">
-                        <h5>Nathan Mullins</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="img/team/team-3.jpg" alt="">
-                        <h5>Nathan Mullins</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <?php endforeach?>
             </div>
         </div>
     </section>
@@ -249,7 +202,7 @@
     <!-- Gallery End -->
 
     <!-- Latest News Begin -->
-    <section class="latest spad">
+    <section id="tips" class="latest spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-6">
@@ -264,8 +217,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="latest__item">
                             <h5><a href="#"><?= $tips["title"] ?></a></h5>
-                            <p><?= $tips["description"] ?></p>
-                            
+                            <p><?= $tips["description"] ?></p>                            
                         </div>
                     </div>
                 <?php endforeach?>                
@@ -275,112 +227,10 @@
     <!-- Latest News End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="footer__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-8">
-                        <div class="footer__newslatter">
-                            <form action="#">
-                                <input type="text" placeholder="Email">
-                                <button type="submit" class="site-btn">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h5>Company</h5>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Departments</a></li>
-                            <li><a href="#">Find a Doctor</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">News</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h5>Quick links</h5>
-                        <ul>
-                            <li><a href="#">Facial Fillers</a></li>
-                            <li><a href="#">Breast Surgery</a></li>
-                            <li><a href="#">Body Lifts</a></li>
-                            <li><a href="#">Face & Neck</a></li>
-                            <li><a href="#">Fat Reduction</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="footer__address">
-                        <h5>Contact Us</h5>
-                        <ul>
-                            <li><i class="fa fa-map-marker"></i> Los Angeles Gournadi, 1230 Bariasl</li>
-                            <li><i class="fa fa-phone"></i> 1-677-124-44227</li>
-                            <li><i class="fa fa-envelope"></i> Support@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-6">
-                    <div class="footer__map">
-                        <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48158.305462977965!2d-74.13283844036356!3d41.02757295168286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2e440473470d7%3A0xcaf503ca2ee57958!2sSaddle%20River%2C%20NJ%2007458%2C%20USA!5e0!3m2!1sen!2sbd!4v1575917275626!5m2!1sen!2sbd"
-                        height="190" style="border:0" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer__copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <div class="footer__copyright__text">
-                            <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-                        </div>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                    <div class="col-lg-5">
-                        <ul>
-                            <li>All Rights Reserved</li>
-                            <li>Terms & Use</li>
-                            <li>Privacy Policy</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include "layout/footer.php" ?>                
     <!-- Footer Section End -->
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <?php include "layout/js.php" ?>            
 </body>
 
 </html>

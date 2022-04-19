@@ -1,5 +1,5 @@
 <?php
-    include "../service/service.php";
+    include "../service.php";
     // Declare for this page
     $_SESSION["title_admin"] = "Tips";
 
@@ -32,30 +32,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Basic Initialisation</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Library</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include "partial_nav.php" ?>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -167,7 +144,7 @@
                                                                     >
                                                                     Close
                                                                     </button>
-                                                                    <form action="../service/service.php" method="post"> 
+                                                                    <form action="../service.php" method="post"> 
                                                                     <input type="hidden" name="id" value="<?= $tips["id"]?>">                                 
                                                                     <button name="delete_tips" type="submit" class="btn btn-danger">
                                                                         Save changes
@@ -206,7 +183,7 @@
                                                                 <div class="modal-body">
                                                                 <div class="row">
                                                                     <div class="col-12">                
-                                                                        <form action="../service/service.php" method="post" enctype='multipart/form-data'>
+                                                                        <form action="../service.php" method="post" enctype='multipart/form-data'>
                                                                             <input type="hidden" name="id" value="<?= $tips['id'] ?>">
                                                                             <div class="form-body">
                                                                                 <div class="row">
@@ -320,19 +297,19 @@
             <div class="modal-body">
             <div class="row">
                 <div class="col-12">                
-                    <form action="../service/service.php" method="post" enctype='multipart/form-data'>
+                    <form action="../service.php" method="post" enctype='multipart/form-data'>
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input name="title" type="text" class="form-control" placeholder="1">
+                                        <input name="title" type="text" class="form-control" placeholder="title">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>description</label>
-                                        <input name="description" type="text" class="form-control" placeholder="col-md-11">
+                                        <input name="description" type="text" class="form-control" placeholder="description">
                                     </div>
                                 </div>
                             </div>

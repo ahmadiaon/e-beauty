@@ -1,5 +1,5 @@
 <?php
-    include "../service/service.php";
+    include "../service.php";
     // Declare for this page
     $_SESSION["title_admin"] = "Users";
 
@@ -112,7 +112,7 @@
                                         <tbody>
                                             <?php foreach($members as $member) :?>
                                                 <tr>
-                                                    <td><?= $member["name"]?></td>
+                                                    <td><?= $member["username"]?></td>
                                                     <td><?= $member["phone_number"]?></td>
                                                     <td><?= $member["email"]?></td>
                                                     <td><?= $member["address"]?></td>
@@ -158,7 +158,7 @@
                                                                 <div class="modal-body">
                                                                     <h5 class="mt-0">Are you sure to delete this member ?</h5>
                                                                     <p>
-                                                                    Member name is <b><?= $member["name"]?></b> 
+                                                                    Member name is <b><?= $member["username"]?></b> 
                                                                     </p>                                  
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -169,7 +169,7 @@
                                                                     >
                                                                     Close
                                                                     </button>
-                                                                    <form action="../service/service.php" method="post"> 
+                                                                    <form action="../service.php" method="post"> 
                                                                     <input type="hidden" name="id" value="<?= $member["id"]?>">                                 
                                                                     <button name="delete_member" type="submit" class="btn btn-danger">
                                                                         Save changes
@@ -208,14 +208,14 @@
                                                                 <div class="modal-body">
                                                                 <div class="row">
                                                                     <div class="col-12">                
-                                                                        <form action="../service/service.php" method="post" enctype='multipart/form-data'>
+                                                                        <form action="../service.php" method="post" enctype='multipart/form-data'>
                                                                             <input type="hidden" name="id" value="<?= $member['id'] ?>">
                                                                             <div class="form-body">
                                                                                 <div class="row">
                                                                                     <div class="col-md-5">
                                                                                         <div class="form-group">
                                                                                             <label>Name</label>
-                                                                                            <input name="name" value="<?= $member['name'] ?>" type="text" class="form-control" placeholder="1">
+                                                                                            <input name="username" value="<?= $member['username'] ?>" type="text" class="form-control" placeholder="1">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-7">
@@ -331,19 +331,19 @@
             <div class="modal-body">
             <div class="row">
                 <div class="col-12">                
-                    <form action="../service/service.php" method="post" enctype='multipart/form-data'>
+                    <form action="../service.php" method="post" enctype='multipart/form-data'>
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input name="name" type="text" class="form-control" placeholder="1">
+                                        <input name="username" type="text" class="form-control" placeholder="name">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label>email</label>
-                                        <input name="email" type="email" class="form-control" placeholder="col-md-11">
+                                        <input name="email" type="email" class="form-control" placeholder="email">
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +351,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input name="address" type="text" class="form-control" placeholder="col-md-10">
+                                        <input name="address" type="text" class="form-control" placeholder="address">
                                     </div>
                                 </div>
                             </div>
@@ -359,13 +359,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input name="phone_number" type="text" class="form-control" placeholder="col-md-3">
+                                        <input name="phone_number" type="text" class="form-control" placeholder="phone number">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input name="password" type="text" class="form-control" placeholder="col-md-9">
+                                        <input name="password" type="text" class="form-control" placeholder="password">
                                     </div>
                                 </div>
                             </div>                        

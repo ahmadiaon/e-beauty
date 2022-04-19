@@ -1,16 +1,16 @@
 <?php
 
-if(isset($_SESSION["isLogin"])){
-    echo "a";
-    die;
+// if(isset($_SESSION["isLogin"])){
+//     echo "a";
+//     die;
 
-}else{
-    echo "b";
-    die;
-}
-if($_SESSION["isLogin"] == false){
-    header("location: ../admin/authentication-login.php");
-}
+// }else{
+//     echo "b";
+//     die;
+// }
+// if($_SESSION["isLogin"] == false){
+//     header("location: ../admin/authentication-login.php");
+// }
 function validation($data){
     $validated = htmlspecialchars($data);
     return $validated;
@@ -84,6 +84,12 @@ function get_where($table, $field, $value){
         $rows[]=$row;			
     }
     return $rows;	
+}
+
+function first($table){
+    global $conn;
+    $login = mysqli_query($conn,"select * from $table");
+    return mysqli_fetch_assoc($login);
 }
 
 function getAll($table){
@@ -162,6 +168,8 @@ function insert($table, $data){
     global $conn;
     $data = getvalue($data);
     $sql = 'INSERT INTO '.$table.' ('.$data["key"].') VALUES ('.$data["value"].')';
+    // var_dump($sql);die;
+
     
     return mysqli_query($conn, $sql);
 }
@@ -278,6 +286,24 @@ function editTips($data){
     $result = update("tips", $data, $id);
     if($result){
         header("location: ../admin/tips.php");
-    }        
-   
+    }
+}
+
+// ======================== P R O F I L E =
+function editHome($data){  
+    $keys = "";
+    $id= $data["id"];
+    
+    $result = update("profile", $data, $id);
+    if($result){
+        header("location: ../manage_index.php");
+    }
+}
+
+// ====================================== R E S E R V A T I O N S =
+function addReservation($data){
+    $result = insert("reservations", $data);
+    if($result){
+        header("location: products.php");
+    }
 }

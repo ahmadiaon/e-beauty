@@ -1,5 +1,5 @@
 <?php
-    include "../service/service.php";
+    include "../service.php";
     // Declare for this page
     $_SESSION["title_admin"] = "My Profile";
 

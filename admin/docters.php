@@ -1,9 +1,8 @@
 <?php
-    include "../service/service.php";
+    include "../service.php";
     // Declare for this page
     $_SESSION["title_admin"] = "Docter";
 
-    $data = where("users","username",$_SESSION["username"]);
     $docters = getAll("docters");
 ?>
 
@@ -60,7 +59,7 @@
                           </div>
                         </div>
                         <div class="table-responsive">
-                          <table class="table no-wrap v-middle mb-0">
+                          <table id="zero_config" class="table no-wrap v-middle mb-0">
                             <thead>
                               <tr class="border-0">
                                 <th
@@ -181,7 +180,7 @@
                                         >
                                           Close
                                         </button>
-                                        <form action="../service/service.php" method="post"> 
+                                        <form action="service.php" method="post"> 
                                           <input type="hidden" name="id" value="<?= $docter["id"]?>">                                 
                                           <button name="delete_docter" type="submit" class="btn btn-danger">
                                             Save changes
@@ -221,7 +220,7 @@
                                             </a>
                                           </div>
 
-                                          <form class="pl-3 pr-3" action="../service/service.php" method="post" enctype='multipart/form-data'>
+                                          <form class="pl-3 pr-3" action="../service.php" method="post" enctype='multipart/form-data'>
                                               <input type="hidden" name="id" value="<?= $docter["id"] ?>">
                                               <div class="row">
                                                 <div class="col-md-8">
@@ -233,7 +232,7 @@
                                                             id="username"
                                                             required=""
                                                             name="name" value="<?= $docter["name"] ?>"
-                                                            placeholder="Michael Zenaty"
+                                                            placeholder="Name docter"
                                                         />
                                                     </div>
                                                     <div class="form-group">
@@ -245,7 +244,7 @@
                                                             required=""
                                                             name="specialis"
                                                             value="<?= $docter["specialis"] ?>"
-                                                            placeholder="Michael Zenaty"
+                                                            placeholder="specialis"
                                                         />
                                                     </div>
                                                 </div>
@@ -272,7 +271,7 @@
                                                 id="username"
                                                 required=""
                                                 value="<?= $docter["facebook"] ?>"
-                                                placeholder="Michael Zenaty"
+                                                placeholder="facebook"
                                               />
                                             </div>
 
@@ -285,7 +284,7 @@
                                                 id="emailaddress"
                                                 required=""
                                                 value="<?= $docter["instagram"] ?>"
-                                                placeholder="docter specialis is"
+                                                placeholder="docter instagram is"
                                               />
                                             </div>
                                             <div class="form-group">
@@ -297,7 +296,7 @@
                                                 id="emailaddress"
                                                 value="<?= $docter["twitter"] ?>"
                                                 required=""
-                                                placeholder="docter specialis is"
+                                                placeholder="docter twitter is"
                                               />
                                             </div>
                                             
@@ -376,7 +375,7 @@
                 </a>
               </div>
               
-              <form class="pl-3 pr-3" action="../service/service.php" method="post" enctype='multipart/form-data'>
+              <form class="pl-3 pr-3" action="../service.php" method="post" enctype='multipart/form-data'>
                   <div class="row">
                     <div class="col-md-8">
                         <div class="form-group">
@@ -387,7 +386,7 @@
                                 id="username"
                                 required=""
                                 name="name"
-                                placeholder="Michael Zenaty"
+                                placeholder="docter name is"
                             />
                         </div>
                         <div class="form-group">
@@ -398,7 +397,7 @@
                                 id="username"
                                 required=""
                                 name="specialis"
-                                placeholder="Michael Zenaty"
+                                placeholder="specialis docter is"
                             />
                         </div>
                     </div>
@@ -424,7 +423,7 @@
                     name="facebook"
                     id="username"
                     required=""
-                    placeholder="Michael Zenaty"
+                    placeholder="facebook docter is"
                   />
                 </div>
 

@@ -1,10 +1,10 @@
 <?php
 // database
 define("HOST", "localhost");
-define("USERNAME", "root");
-define("PASSWORD", "");
-define("DATABASE", "e_beautys");
-define("APP_NAME", "beauty");
+define("USERNAME", "u815927083_beautier");
+define("PASSWORD", "saydatunB1");
+define("DATABASE", "u815927083_beauties");
+define("APP_NAME", "beauties");
 
 
 ?>

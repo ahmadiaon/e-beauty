@@ -1,0 +1,1 @@
+Waiting customer to finish transaction order_id: 1074643265 using echannel

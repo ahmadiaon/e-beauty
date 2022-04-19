@@ -1,0 +1,1 @@
+Payment using echannel for transaction order_id: 390738395 is denied.

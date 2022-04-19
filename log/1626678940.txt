@@ -1,0 +1,1 @@
+Transaction order_id: 1626678940 successfully transfered using echannel
